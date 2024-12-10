@@ -1,10 +1,10 @@
 import { z } from "zod";
+
 const createUserSchema = z.object({
 	name: z.string().min(2).includes(' '),
-  email: z.string().email(),
+  email: z.string().email().includes('@'),
   password: z.string().min(8),
 })
-
 
 // Fejl bliver meget tekniske med zod (feks: String must contain at least 2 character(s))
 // Evt kunne vi bruge https://www.npmjs.com/package/zod-validation-error 
