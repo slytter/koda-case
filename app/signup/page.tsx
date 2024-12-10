@@ -4,8 +4,8 @@ import { createMember } from "./actions";
 import Form from 'next/form'
 
 const ErrorField = ({ name, messages }: { name: string, messages?: string[] }) => {
-  
   if (!messages) return null;
+
   return (
     <ul>
      { messages?.map((message, index) => (
