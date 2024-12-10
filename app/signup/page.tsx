@@ -23,7 +23,7 @@ const inputFieldClass = "bg-gray-100 p-2 outline-1 border-solid border-black/[.0
 // Pt forsvinder fields når der action bliver udført. 
 // Enten kan man "preventDefault" for form submition, eller holde inputfelter i noget state.
 const SignUp = () => {
-  const [result, createMemberAction, isPending] = useActionState(createMember, {});
+  const [result, createMemberAction, isPending] = useActionState(createMember, null);
   const isError = !!result?.error; // Assuming `message` includes an `error` field
   const validationErrors = result?.validationErrors;
 
