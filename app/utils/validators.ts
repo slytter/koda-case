@@ -6,6 +6,8 @@ const createUserSchema = z.object({
   password: z.string().min(8),
 })
 
+export type UserFormData = z.infer<typeof createUserSchema>
+
 // Fejl bliver meget tekniske med zod (feks: String must contain at least 2 character(s))
 // Evt kunne vi bruge https://www.npmjs.com/package/zod-validation-error 
 // For at få mere brugervenlige fejlmeddelelse
@@ -17,7 +19,7 @@ export const parseUserForm = (formData: FormData) => {
 	return result
 }
 
-
+// eslint-disable-next-line
 export const emailExists = async (email: string) => {
 	return false
 }
