@@ -1,7 +1,5 @@
-import { neon } from "@neondatabase/serverless";
+import { sql } from "@/app/controllers/db";
 import { NextApiRequest, NextApiResponse } from "next";
-
-const sql = neon(process.env.DATABASE_URL);
 
 
 // Route som opretter members tabel
@@ -10,6 +8,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         return res.status(405).json({ error: "Only GET requests are allowed" });
     }
 
+
+    // email VARCHAR(255) NOT NULL UNIQUE sikre at email er unikke. Vi griber fejlen i controlleren hvis email allerede findes
     try {
         await sql`
             CREATE TABLE IF NOT EXISTS members (

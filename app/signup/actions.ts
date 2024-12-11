@@ -1,7 +1,7 @@
 "use server"
 import { parseUserForm } from "../utils/validators"
 import { z } from "zod"
-import { addMemberToDb } from "../controllers/db"
+import { addMemberToDb } from "../controllers/member.controller"
 
 // eslint-disable-next-line 
 export async function createMember(previousState: any, formData: FormData) {
