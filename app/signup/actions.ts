@@ -1,15 +1,14 @@
 "use server"
-import { emailExists, parseUserForm } from "../utils/validators"
+import { parseUserForm } from "../utils/validators"
 import { z } from "zod"
-
+import { addMemberToDb } from "../controllers/db"
 
 // eslint-disable-next-line 
 export async function createMember(previousState: any, formData: FormData) {
     try {
         const parsedUser = parseUserForm(formData)
-        if(await emailExists(parsedUser.email)) {
-            throw new Error("Email eksisterer allerede i databasen")
-        }
+        await addMemberToDb(parsedUser)
+
         return { user: parsedUser, message: `Medlemskab oprettet for ${parsedUser.email}`, error: false }
     } catch(error) {
         if(error instanceof Error) {

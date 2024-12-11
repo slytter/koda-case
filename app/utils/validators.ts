@@ -20,8 +20,3 @@ export const parseUserForm = (formData: FormData) => {
 }
 
 
-
-// eslint-disable-next-line
-export const emailExists = async (email: string) => {
-	return false
-}
