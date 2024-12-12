@@ -4,6 +4,6 @@ import { NextRequest, NextResponse } from "next/server";
 export function middleware(req: NextRequest) {
     const response = NextResponse.next();
     console.log('HIT MIDDLEWARE')
-    response.headers.set('Cache-Control', 'no-store');
+    response.headers.set('Cache-Control', 'no-cache');
     return response;
 }
