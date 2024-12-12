@@ -10,7 +10,7 @@ export function middleware(req: NextRequest) {
     const response = NextResponse.next();
     console.log('Cache-Control header set for /members');
     response.headers.set('Cache-Control', 'no-store');
-    response.headers.set('cache', 'no-store');
+    response.headers.set('Cache', 'no-store');
 
     return response;
       
