@@ -41,7 +41,11 @@ const Members = async () => {
         )
 
     } catch (error) {
-        return <div>Error occured: {error?.message}</div>
+        if(error instanceof Error) {
+            return <div>Fejl opstod: {error.message}</div>
+        } else {
+            return <div>Ukendt fejl opstod</div>
+        }
     }
 }
 

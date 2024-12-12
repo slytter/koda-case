@@ -13,8 +13,6 @@ export const addMemberToDb = async (member: Member) => {
         // Encrypt password
         const encryptedPassword = await bcrypt.hash(member.password, 10);
 
-        console.log({encryptedPassword})
-
         // Insert the validated member into the database
         const res = await sql`
             INSERT INTO members (name, email, password)
