@@ -54,5 +54,4 @@ const Members = async () => {
 
 export default Members
 
-
 export const dynamic = 'force-dynamic'
