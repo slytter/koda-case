@@ -17,7 +17,7 @@ const ValidationErrors = ({ name, messages }: { name: string, messages?: string[
   )
 }
 
-const inputFieldClass = "bg-gray-100 p-2 outline-1 border-solid border-black/[.08] dark:border-white/[.145] rounded-lg"
+const inputFieldClass = "bg-gray-100 p-2 outline-1 border-solid border-black/[.08] dark:border-white/[.145] rounded-lg dark:bg-gray-800 dark:text-white"
 const buttonClass = "rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
 
 // Pt forsvinder fields når der action bliver udført (altså også selvom values er forkerte hvilket er ret irriterende)
