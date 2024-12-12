@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 export const memberSchema = z.object({
-	name: z.string().min(2).includes(' '),
+	name: z.string().min(3).includes(' '),
   email: z.string().email().includes('@'),
   password: z.string().min(8),
 })

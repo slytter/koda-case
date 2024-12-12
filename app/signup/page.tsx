@@ -10,7 +10,8 @@ const ValidationErrors = ({ name, messages }: { name: string, messages?: string[
     <ul>
      { messages?.map((message, index) => (
        <li key={index} className="text-sm text-red-500 ">
-          • {message.replaceAll('String', name.toString())}
+          {/* Vi erstatter "String" med navnet på feltet for at fejlen bliver tydeligere */}
+          • {message.replaceAll('String', name)} 
         </li>
       ))}
     </ul>
