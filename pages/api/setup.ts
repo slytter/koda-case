@@ -9,7 +9,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
 
-    // email VARCHAR(255) NOT NULL UNIQUE sikre at email er unikke. Vi griber fejlen i controlleren hvis email allerede findes
+    // "email VARCHAR(255) NOT NULL UNIQUE" sikre at emails er unikke. 
+    // Vi griber fejlen i controlleren hvis email allerede findes.
     try {
         await sql`
             CREATE TABLE IF NOT EXISTS members (

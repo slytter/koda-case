@@ -1,12 +1,12 @@
 import { z } from "zod";
 
-export const createUserSchema = z.object({
+export const memberSchema = z.object({
 	name: z.string().min(2).includes(' '),
   email: z.string().email().includes('@'),
   password: z.string().min(8),
 })
 
-export type Member = z.infer<typeof createUserSchema>
+export type Member = z.infer<typeof memberSchema>
 
 // Fejl bliver meget tekniske med zod (feks: String must contain at least 2 character(s))
 // Evt kunne vi bruge https://www.npmjs.com/package/zod-validation-error 
@@ -15,7 +15,7 @@ export type Member = z.infer<typeof createUserSchema>
 export const parseUserForm = (formData: FormData) => {
   // Validate form data with createUserSchema
   const formDataAsObject = Object.fromEntries(formData)
-	const result = createUserSchema.parse(formDataAsObject)
+	const result = memberSchema.parse(formDataAsObject)
 	return result
 }
 

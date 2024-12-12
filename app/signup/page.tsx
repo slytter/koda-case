@@ -18,9 +18,9 @@ const ErrorField = ({ name, messages }: { name: string, messages?: string[] }) =
 }
 
 const inputFieldClass = "bg-gray-100 p-2 outline-1 border-solid border-black/[.08] dark:border-white/[.145] rounded-lg"
+const buttonClass = "rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
 
-
-// Pt forsvinder fields når der action bliver udført. 
+// Pt forsvinder fields når der action bliver udført (altså også selvom values er forkerte hvilket er ret irriterende)
 // Enten kan man "preventDefault" for form submition, eller holde inputfelter i noget state.
 const SignUp = () => {
   const [result, createMemberAction, isPending] = useActionState(createMember, null);
@@ -45,7 +45,7 @@ const SignUp = () => {
             <input type="password" name="password" placeholder="Password" className={inputFieldClass} />
             <ErrorField name="Password" messages={validationErrors?.password} />
           </div>
-          <button disabled={isPending} type="submit" className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5">
+          <button disabled={isPending} type="submit" className={buttonClass}>
             Opret medlemskab
           </button>
         </Form>
@@ -58,6 +58,10 @@ const SignUp = () => {
             {result.message.toString()}
           </p>
         )}
+        {!!(result?.message && !isError) && <a href="/members" className={buttonClass + " w-full bg-slate-100 text-slate-700 hover:bg-slate-200 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"}>
+          Se alle medlemmer i db
+        </a>}
+
       </main>
     </div>
   )
