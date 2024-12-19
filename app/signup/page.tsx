@@ -1,5 +1,5 @@
 "use client"
-import { useActionState } from "react";
+import { useActionState, useState } from "react";
 import { createMember } from "./actions";
 import Form from 'next/form'
 
@@ -28,6 +28,10 @@ const SignUp = () => {
   const isError = !!result?.error;
   const validationErrors = result?.validationErrors;
 
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-2 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-4 row-start-2 items-center sm:items-start">
@@ -35,15 +39,15 @@ const SignUp = () => {
         <p className="text-center text-sm">Opret dig med din email og fuldt navn</p> 
         <Form className="flex flex-col gap-4 w-full" action={createMemberAction}>
           <div className="flex flex-col gap-2">
-            <input type="text" name="name" placeholder="Fulde navn (skal indeholde mellemrum)" className={inputFieldClass} />
+            <input value={name} onChange={(e) => setName(e.target.value)} type="text" name="name" placeholder="Fulde navn (skal indeholde mellemrum)" className={inputFieldClass} />
             <ValidationErrors name="Name" messages={validationErrors?.name} />
           </div>
           <div className="flex flex-col gap-2">
-            <input type="text" name="email" placeholder="Email" className={inputFieldClass} />
+            <input value={email} onChange={(e) => setEmail(e.target.value)} type="text" name="email" placeholder="Email" className={inputFieldClass} />
             <ValidationErrors name="Email" messages={validationErrors?.email} />
           </div>
           <div className="flex flex-col gap-2">
-            <input type="password" name="password" placeholder="Password" className={inputFieldClass} />
+            <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" name="password" placeholder="Password" className={inputFieldClass} />
             <ValidationErrors name="Password" messages={validationErrors?.password} />
           </div>
           <button disabled={isPending} type="submit" className={buttonClass}>

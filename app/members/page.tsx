@@ -5,6 +5,7 @@ const Members = async () => {
 
     try {
         const members = await getMembers()
+
         if (!members) {
             throw new Error('No members')
         }
@@ -15,30 +16,29 @@ const Members = async () => {
                     <h1 className="text-center text-4xl font-bold mb-4">
                         All medlemmer
                     </h1>
-                        <table className="w-full border-separate border-spacing-2 border border-black/[.08] rounded-lg">
-                            <thead>
-                                <tr>
-                                    <th className="text-left border-b border-black/[.08]">Id</th>
-                                    <th className="text-left border-b border-black/[.08]">Navn</th>
-                                    <th className="text-left border-b border-black/[.08]">Email</th>
-                                    <th className="text-left border-b border-black/[.08]">Encrypted password</th>
+                    <table className="w-full border-separate border-spacing-2 border border-black/[.08] rounded-lg">
+                        <thead>
+                            <tr>
+                                <th className="text-left border-b border-black/[.08]">Id</th>
+                                <th className="text-left border-b border-black/[.08]">Navn</th>
+                                <th className="text-left border-b border-black/[.08]">Email</th>
+                                <th className="text-left border-b border-black/[.08]">Encrypted password</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {members.map(member => (
+                                <tr key={member.id}>
+                                    <td>{member.id}</td>
+                                    <td>{member.name}</td>
+                                    <td>{member.email}</td>
+                                    <td className="text-xs font-mono">{member.password}</td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                {members.map(member => (
-                                    <tr key={member.id}>
-                                        <td>{member.id}</td>
-                                        <td>{member.name}</td>
-                                        <td>{member.email}</td>
-                                        <td className="text-xs font-mono">{member.password}</td>
-                                    </tr>
-                                ))}
-                            </tbody>                    
-                        </table>
+                            ))}
+                        </tbody>                    
+                    </table>
                     <a href="signup" className={buttonClass}>
                         Opret medlemskab
                     </a>
-
                 </main>
             </div>
         )
